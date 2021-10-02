@@ -76,7 +76,8 @@ int main(int argc, char const *argv[])
 {
     if (argc != 5)
     {
-        cout << "command line params expected: roster_eu_file roster_us_file, destination_file, nb_of_days\n";
+        cout << "command line params expected: roster_eu_file roster_us_file destination_file nb_of_days\n";
+        cout << "eg: ./roster roster_eu.txt roster_us.txt roster_schedule.csv 365\n";
         return 0;
     }
 
