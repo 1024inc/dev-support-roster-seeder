@@ -1,3 +1,5 @@
+Vincent
+Anna
 Jorge
 Inês
 Gerard
@@ -6,7 +8,5 @@ Nizar
 Daniel
 Francisco
 Marcos
-Pedro
-Vincent
-Anna
-Bruno
+Fer
+Tamas
