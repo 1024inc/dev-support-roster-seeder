@@ -14,7 +14,7 @@ class parser
         virtual void abstract() = 0;
     
     public:
-        static void parse(string rosterEUFile, string rosterUSFile, string scheduleFile, int nbDays)
+        static void parse(string rosterEUFile, string rosterUSFile, string scheduleFile, int nbDays, int nbDaysOffset)
         {
             vector<string> roster_us;
             vector<string> roster_eu;
@@ -53,6 +53,8 @@ class parser
 
             clock = time(0);
             day = localtime(&clock);
+            day->tm_mday += nbDaysOffset;
+            mktime(day);
             cntRoster = 0;
             for (cnt = 0; cnt < nbDays; cnt++)
             {
@@ -74,12 +76,12 @@ class parser
 
 int main(int argc, char const *argv[])
 {
-    if (argc != 5)
+    if (argc != 6)
     {
-        cout << "command line params expected: roster_eu_file roster_us_file destination_file nb_of_days\n";
-        cout << "eg: ./roster roster_eu.txt roster_us.txt roster_schedule.csv 365\n";
+        cout << "command line params expected: roster_eu_file roster_us_file destination_file nb_of_days days_offset\n";
+        cout << "eg: ./roster roster_eu.txt roster_us.txt roster_schedule.csv 365 0\n";
         return 0;
     }
 
-    parser::parse(argv[1], argv[2], argv[3], atoi(argv[4]));
+    parser::parse(argv[1], argv[2], argv[3], atoi(argv[4]), atoi(argv[5]));
 }
